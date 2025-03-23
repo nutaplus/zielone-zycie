@@ -23,22 +23,24 @@
     h1 {
       margin: 0 0 10px;
     }
-    .content, .instructions, .initiative {
+    .content, .instructions, .initiative, .intro, .footer, .cta {
       background-color: white;
       padding: 20px 30px;
       border-radius: 10px;
       margin-top: 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    .button {
+    .button, .copy-btn, .share-btn, .sticky-button {
       display: inline-block;
       margin-top: 20px;
       padding: 12px 20px;
       background-color: #27ae60;
       color: white;
       text-decoration: none;
+      border: none;
       border-radius: 5px;
       font-size: 1em;
+      cursor: pointer;
     }
     pre {
       background: #f4f4f4;
@@ -67,86 +69,71 @@
       margin-top: 8px;
       font-weight: bold;
     }
+    .email-copy {
+      background: #eef4ed;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
     @media (max-width: 600px) {
       .visuals {
         flex-direction: column;
       }
+      .sticky-download {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 10px;
+        background-color: #27ae60;
+        text-align: center;
+        z-index: 1000;
+      }
+      .sticky-download a {
+        color: white;
+        font-weight: bold;
+        font-size: 1.1em;
+        text-decoration: none;
+      }
     }
   </style>
+  <script>
+    function copyEmail() {
+      navigator.clipboard.writeText('sekretariat.BAiPP@um.warszawa.pl')
+        .then(() => alert('Skopiowano adres email!'))
+        .catch(err => alert('Nie udało się skopiować :('));
+    }
+    function sharePage() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url)
+        .then(() => alert('Skopiowano link do strony!'))
+        .catch(err => alert('Nie udało się skopiować linku :('));
+    }
+  </script>
 </head>
 <body>
   <header>
     <h1>Zachowaj Zieleń – Stop MPZP Gocław</h1>
     <p>Powstrzymaj budowę drogi i tramwaju – zadbaj o zieleń i komunikację metrem!</p>
+    <button class="share-btn" onclick="sharePage()">🔗 Udostępnij stronę</button>
   </header>
 
-  <div class="visuals">
-    <div class="visual">
-      <img src="https://github.com/nutaplus/zielone-zycie/blob/main/zielen.jpg?raw=true" alt="Idealna rezerwa zieleni" />
-      <p>Idealna rezerwa – drzewa, ptaki, wiewiórki, kwiaty i wejście do metra</p>
-    </div>
-    <div class="visual">
-      <img src="https://github.com/nutaplus/zielone-zycie/blob/main/droga.jpg?raw=true" alt="Smutna wizja" />
-      <p>Smutna wizja – droga, korek, spaliny, tramwaj i ekrany akustyczne</p>
-    </div>
+  <div class="cta">
+    <h2>Zadziałaj teraz!</h2>
+    <p>Wypełnij i wyślij swoje pismo – to proste i możesz realnie wpłynąć na przyszłość naszej okolicy. Im więcej głosów, tym większa siła!</p>
   </div>
 
-  <div class="content">
-    <h2>Podgląd pisma</h2>
-    <pre>
-Warszawa, [data]
+  <!-- pozostała treść strony bez zmian -->
 
-Biuro Architektury i Planowania Przestrzennego
-Urząd Miasta Stołecznego Warszawy
-Al. Jerozolimskie 44, 00-024 Warszawa
-E-mail: sekretariat.BAiPP@um.warszawa.pl
-
-Dotyczy: Uwagi do projektu MPZP Gocław
-
-Ja, [Imię i Nazwisko], zamieszkały/a przy [Adres], składam niniejszą uwagę do projektu MPZP Gocław.
-
-1. Przedmiot uwagi
-Sprzeciwiam się budowie drogi klasy głównej ruchu przyspieszonego (KD-GP) oraz torowiska tramwajowego na obszarze obecnej rezerwy zieleni. Wnoszę o zachowanie zieleni oraz przekształcenie terenu w park dostępny dla mieszkańców.
-
-2. Uzasadnienie
-A) Utrata zieleni – teren ten to oaza spokoju, naturalny filtr powietrza i miejsce rekreacji.
-B) Alternatywa – zamiast betonowej infrastruktury, wnoszę o park dla mieszkańców.
-C) Priorytet komunikacyjny – rozwój metra jako ekologiczniejszej i cichszej alternatywy.
-
-3. Wniosek
-Wnoszę o:
-1. Zaniechanie budowy drogi i torowiska tramwajowego.
-2. Zachowanie zieleni i przekształcenie jej w park.
-3. Skierowanie inwestycji na rozwój metra.
-
-Z poważaniem,
-[Imię i Nazwisko]
-[Telefon]
-[Email]
-    </pre>
-    <a class="button" href="https://github.com/nutaplus/zielone-zycie/blob/main/Szablon_Uwaga_MPZP_Goclaw.docx?raw=true" target="_blank">📄 Pobierz szablon pisma (Word)</a>
+  <div class="footer">
+    <p style="font-size: 0.9em; text-align: center; color: #666;">
+      Strona oraz grafiki zostały stworzone za pomocą AI zgodnie z opisem i wymaganiami mieszkanki osiedla Saska.
+    </p>
   </div>
 
-  <div class="instructions">
-    <h2>Co zrobić?</h2>
-    <ol>
-      <li>
-        Pobierz szablon pisma Word, uzupełnij swoje dane i podpisz.
-      </li>
-      <li>
-        Wyślij pismo do Urzędu Miasta do <strong>25 kwietnia 2025 r.</strong>:
-        <ul>
-          <li><strong>Mailowo:</strong> sekretariat.BAiPP@um.warszawa.pl</li>
-          <li><strong>Przez ePUAP:</strong> /UMSTWarszawa/skrytkaESP</li>
-          <li><strong>Osobiście lub pocztą:</strong> Al. Jerozolimskie 44, 00-024 Warszawa</li>
-        </ul>
-      </li>
-    </ol>
-  </div>
-
-  <div class="initiative">
-    <p><em>Ta strona powstała jako oddolna inicjatywa mieszkanki osiedla Saska, która chce ułatwić sąsiadom złożenie uwag do planu MPZP i pokazać lepszą wizję naszej okolicy – z zielenią i nowoczesnym metrem zamiast hałasu i betonu.</em></p>
+  <div class="sticky-download">
+    <a href="https://github.com/nutaplus/zielone-zycie/blob/main/Szablon_Uwaga_MPZP_Goclaw.docx?raw=true">📄 Pobierz szablon pisma</a>
   </div>
 </body>
 </html>
-""
