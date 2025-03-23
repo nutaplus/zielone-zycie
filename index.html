@@ -74,4 +74,350 @@
       font-weight: 700;
     }
     .initiative, .content, .instructions, .privacy {
-      background: #
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .initiative p, .content p, .instructions p, .privacy p {
+      margin: 10px 0;
+    }
+    .content h2, .instructions h3 {
+      color: #2c3e50;
+      margin-top: 0;
+    }
+    .content a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 700;
+    }
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .button-group {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .button-group button {
+      padding: 12px 20px;
+      background-color: #27ae60;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      flex: 1;
+      min-width: 200px;
+    }
+    .button-group button:hover {
+      background-color: #219150;
+    }
+    .privacy {
+      background: #e8f5e9;
+      border: 1px solid #a5d6a7;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+      margin-top: 20px;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+      .initiative, .content, .instructions, .privacy {
+        padding: 15px 20px;
+      }
+      .button-group {
+        flex-direction: column;
+      }
+      .visuals {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Akcja Zachowaj Zieleń!</h1>
+    <p>Nie tylko powstrzymaj budowę drogi i tramwaju – zadbaj o doskonałą zieleń i nowoczesną komunikację metrem!</p>
+    <div class="share-container">
+      <button onclick="sharePage()">Udostępnij stronę</button>
+    </div>
+  </header>
+  
+  <!-- Wizualizacje na samej górze strony -->
+  <div class="visuals">
+    <div class="visual">
+      <img src="https://github.com/nutaplus/zielone-zycie/blob/main/zielen.jpg?raw=true" alt="Idealna rezerwa zieleni">
+      <p>Idealna rezerwa – piękne drzewa, ptaki, wiewiórki, kwiaty, wejście do metra</p>
+    </div>
+    <div class="visual">
+      <img src="https://github.com/nutaplus/zielone-zycie/blob/main/droga.jpg?raw=true" alt="Smutna wizja">
+      <p>Smutna wizja – betonowa droga, korki, emisje, tramwaj, ekrany akustyczne</p>
+    </div>
+  </div>
+  
+  <!-- Sekcja "Wypełnij pismo online" -->
+  <div class="content">
+    <h2>Wypełnij pismo online</h2>
+    <p>Wpisz swoje dane poniżej, aby wygenerować estetycznie sformatowany plik DOCX, który możesz wysłać elektronicznie lub tradycyjnie:</p>
+    <form id="uwagaForm">
+      <label>Imię i nazwisko:</label>
+      <input type="text" id="name" placeholder="Wpisz swoje imię i nazwisko" required>
+      
+      <label>Adres zamieszkania:</label>
+      <input type="text" id="address" placeholder="Wpisz swój adres" required>
+      
+      <label>Telefon kontaktowy (opcjonalnie):</label>
+      <input type="text" id="phone" placeholder="Wpisz swój numer telefonu">
+      
+      <label>Email (opcjonalnie):</label>
+      <input type="email" id="email" placeholder="Wpisz swój email">
+      
+      <div class="button-group">
+        <button type="button" onclick="generateDoc()">Generuj pismo DOCX</button>
+        <button type="button" onclick="downloadBlankTemplate()">Pobierz szablon Word</button>
+        <button type="button" onclick="previewDoc()">Podgląd pisma</button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Sekcja "Co zrobić?" -->
+  <div class="instructions">
+    <h3>Co zrobić?</h3>
+    <ol>
+      <li>
+        <strong>Pobierz szablon pism:</strong>
+        <ul>
+          <li><em>Opcja A:</em> Pobierz pusty szablon Word, wypełnij go ręcznie, a następnie wyślij – możesz wysłać je elektronicznie (mailem) lub tradycyjnie (osobiście, pocztą, ePUAP).</li>
+          <li><em>Opcja B:</em> Skorzystaj z formularza na stronie – wypełnij dane, wygeneruj gotowe pismo DOCX, a następnie wyślij je elektronicznie lub tradycyjnie.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Jak wysłać pismo?</strong>
+        <ul>
+          <li>Elektronicznie, mailem – <strong>sekretariat.BAiPP@um.warszawa.pl</strong></li>
+          <li>Osobiście lub pocztą – <strong>Al. Jerozolimskie 44, 00-024 Warszawa</strong></li>
+          <li>Przez ePUAP – skrzynka: <strong>/UMSTWarszawa/skrytkaESP</strong></li>
+        </ul>
+      </li>
+      <li>Uwagi należy zgłaszać do <strong>25 kwietnia 2025 r.</strong></li>
+      <li>Dołącz swój sprzeciw – Twoja opinia ma znaczenie!</li>
+    </ol>
+  </div>
+  
+  <!-- Inicjatywa oddolna oraz informacje o projekcie MPZP -->
+  <div class="initiative">
+    <p>Ta strona została stworzona jako inicjatywa oddolna mieszkanki osiedla Saska, aby ułatwić wysyłanie sprzeciwu wobec planowanej inwestycji. Naszym celem jest nie tylko powstrzymanie budowy drogi i tramwaju, ale także zapewnienie doskonałej zieleni i rozwój komunikacji metrem.</p>
+  </div>
+  
+  <div class="content">
+    <h2>O projekcie MPZP</h2>
+    <p>Plan miejscowego zagospodarowania przestrzennego Gocławia zakłada budowę drogi klasy głównej ruchu przyspieszonego oraz linii tramwajowej w miejscu, gdzie obecnie znajduje się rezerwa zieleni. Teren ten pełni rolę naturalnego filtra powietrza oraz stanowi ważne miejsce rekreacji dla mieszkańców.</p>
+    <p>Szczegóły projektu znajdziesz na stronie urzędu: 
+      <a href="https://architektura.um.warszawa.pl/-/jaki-plan-miejscowy-dla-obszaru-goclawia-w-rejonie-jeziorka-goclawskiego-czesc-3-wylozenie" target="_blank">
+        Oficjalny projekt MPZP
+      </a>.
+    </p>
+    <p><strong>Dlaczego chcemy to powstrzymać?</strong></p>
+    <ul>
+      <li>Obecny teren zieleni to oaza spokoju, filtr powietrza i miejsce rekreacji.</li>
+      <li>Budowa drogi i tramwaju zwiększy hałas, emisje spalin i pogorszy środowisko.</li>
+      <li>Rozwój metra jest bardziej ekologicznym i efektywnym rozwiązaniem komunikacyjnym.</li>
+    </ul>
+  </div>
+  
+  <!-- Sekcja prywatności -->
+  <div class="privacy">
+    <p><strong>Bezpieczeństwo Twoich danych:</strong> Ta strona nie przetwarza ani nie zapisuje żadnych danych osobowych. Wszystkie informacje, które wpiszesz w formularzu, pozostają wyłącznie na Twoim urządzeniu i nie są przesyłane na serwer. Dzięki temu strona jest zgodna z RODO i gwarantuje pełne bezpieczeństwo Twoich danych.</p>
+  </div>
+  
+  <footer>
+    Ta strona została stworzona jako inicjatywa oddolna mieszkanki osiedla Saska, aby ułatwić wysyłanie sprzeciwu wobec planowanej inwestycji. Strona nie przetwarza ani nie zapisuje danych osobowych.
+  </footer>
+  
+  <script>
+    async function generateDoc() {
+      const { Document, Packer, Paragraph, TextRun } = window.docx;
+      const name = document.getElementById("name").value;
+      const address = document.getElementById("address").value;
+      const phone = document.getElementById("phone").value;
+      const email = document.getElementById("email").value;
+      
+      const doc = new Document({
+        sections: [{
+          children: [
+            new Paragraph({ children: [new TextRun({ text: "Warszawa, [data]", bold: true })] }),
+            new Paragraph(" "),
+            new Paragraph({ children: [new TextRun({ text: "Biuro Architektury i Planowania Przestrzennego", bold: true })] }),
+            new Paragraph("Urząd Miasta Stołecznego Warszawy"),
+            new Paragraph("Al. Jerozolimskie 44, 00-024 Warszawa"),
+            new Paragraph("E-mail: sekretariat.BAiPP@um.warszawa.pl"),
+            new Paragraph(" "),
+            new Paragraph({ children: [new TextRun({ text: "Dotyczy: Uwagi do projektu MPZP Gocław", bold: true })] }),
+            new Paragraph(" "),
+            new Paragraph(`Ja, ${name}, zamieszkały/a przy ${address}, składam niniejszą uwagę do projektu MPZP Gocław.`),
+            new Paragraph(" "),
+            new Paragraph({ text: "1. Przedmiot uwagi", heading: "Heading1" }),
+            new Paragraph("Sprzeciwiam się budowie drogi klasy KD-GP i torowiska tramwajowego. Wnoszę o zachowanie zieleni i przekształcenie jej w park."),
+            new Paragraph(" "),
+            new Paragraph({ text: "2. Uzasadnienie", heading: "Heading1" }),
+            new Paragraph("A) Utrata zieleni – teren ten to oaza spokoju, naturalny filtr powietrza i miejsce rekreacji."),
+            new Paragraph("B) Alternatywa – pełnowartościowy park zamiast betonowej infrastruktury."),
+            new Paragraph("C) Priorytet – rozwój metra zamiast tramwaju, co jest bardziej ekologicznym rozwiązaniem."),
+            new Paragraph(" "),
+            new Paragraph({ text: "3. Wniosek", heading: "Heading1" }),
+            new Paragraph("Wnoszę o:"),
+            new Paragraph("1. Zaniechanie budowy drogi i torowiska tramwajowego."),
+            new Paragraph("2. Zachowanie zieleni i przekształcenie jej w park."),
+            new Paragraph("3. Skierowanie inwestycji na rozwój metra."),
+            new Paragraph(" "),
+            new Paragraph(`Z poważaniem, ${name}`),
+            new Paragraph(`${phone}`),
+            new Paragraph(`${email}`)
+          ],
+        }],
+      });
+      
+      const packer = new Packer();
+      const blob = await packer.toBlob(doc);
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "Uwaga_MPZP_Goclaw.docx";
+      link.click();
+    }
+    
+    async function downloadBlankTemplate() {
+      const { Document, Packer, Paragraph, TextRun } = window.docx;
+      const doc = new Document({
+        sections: [{
+          children: [
+            new Paragraph({ children: [new TextRun({ text: "Warszawa, [data]", bold: true })] }),
+            new Paragraph(" "),
+            new Paragraph({ children: [new TextRun({ text: "Biuro Architektury i Planowania Przestrzennego", bold: true })] }),
+            new Paragraph("Urząd Miasta Stołecznego Warszawy"),
+            new Paragraph("Al. Jerozolimskie 44, 00-024 Warszawa"),
+            new Paragraph("E-mail: sekretariat.BAiPP@um.warszawa.pl"),
+            new Paragraph(" "),
+            new Paragraph({ children: [new TextRun({ text: "Dotyczy: Uwagi do projektu MPZP Gocław", bold: true })] }),
+            new Paragraph(" "),
+            new Paragraph("Ja, [Imię i nazwisko], zamieszkały/a przy [Adres], składam niniejszą uwagę do projektu MPZP Gocław."),
+            new Paragraph(" "),
+            new Paragraph({ text: "1. Przedmiot uwagi", heading: "Heading1" }),
+            new Paragraph("Sprzeciwiam się budowie drogi klasy KD-GP i torowiska tramwajowego."),
+            new Paragraph(" "),
+            new Paragraph({ text: "2. Uzasadnienie", heading: "Heading1" }),
+            new Paragraph("A) Utrata zieleni – teren ten to oaza spokoju, filtr powietrza i miejsce rekreacji."),
+            new Paragraph("B) Alternatywa – pełnowartościowy park zamiast betonowej infrastruktury."),
+            new Paragraph("C) Priorytet – rozwój metra zamiast tramwaju, co jest bardziej ekologicznym rozwiązaniem."),
+            new Paragraph(" "),
+            new Paragraph({ text: "3. Wniosek", heading: "Heading1" }),
+            new Paragraph("Wnoszę o:"),
+            new Paragraph("1. Zaniechanie budowy drogi i torowiska tramwajowego."),
+            new Paragraph("2. Zachowanie zieleni i przekształcenie jej w park."),
+            new Paragraph("3. Skierowanie inwestycji na rozwój metra."),
+            new Paragraph(" "),
+            new Paragraph("Z poważaniem,"),
+            new Paragraph("[Imię i nazwisko]"),
+            new Paragraph("[Telefon]"),
+            new Paragraph("[Email]")
+          ],
+        }],
+      });
+      
+      const packer = new Packer();
+      const blob = await packer.toBlob(doc);
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "Szablon_Uwaga_MPZP_Goclaw.docx";
+      link.click();
+    }
+    
+    function previewDoc() {
+      const name = document.getElementById("name").value || "[Imię i nazwisko]";
+      const address = document.getElementById("address").value || "[Adres]";
+      const phone = document.getElementById("phone").value || "[Telefon]";
+      const email = document.getElementById("email").value || "[Email]";
+      
+      const previewText = `Warszawa, [data]
+      
+Biuro Architektury i Planowania Przestrzennego
+Urząd Miasta Stołecznego Warszawy
+Al. Jerozolimskie 44, 00-024 Warszawa
+E-mail: sekretariat.BAiPP@um.warszawa.pl
+      
+Dotyczy: Uwagi do projektu MPZP Gocław
+      
+Ja, ${name}, zamieszkały/a przy ${address}, składam niniejszą uwagę do projektu MPZP Gocław.
+      
+1. Przedmiot uwagi
+Sprzeciwiam się budowie drogi klasy KD-GP i torowiska tramwajowego.
+      
+2. Uzasadnienie
+A) Utrata zieleni – teren ten to oaza spokoju, naturalny filtr powietrza i miejsce rekreacji.
+B) Alternatywa – pełnowartościowy park zamiast betonowej infrastruktury.
+C) Priorytet – rozwój metra zamiast tramwaju, co jest bardziej ekologicznym rozwiązaniem.
+      
+3. Wniosek
+Wnoszę o:
+1. Zaniechanie budowy drogi i torowiska tramwajowego.
+2. Zachowanie zieleni i przekształcenie jej w park.
+3. Skierowanie inwestycji na rozwój metra.
+      
+Z poważaniem,
+${name}
+${phone}
+${email}`;
+      
+      const previewSection = document.getElementById("previewSection");
+      previewSection.style.display = "block";
+      previewSection.textContent = previewText;
+    }
+    
+    async function sharePage() {
+      const shareData = {
+        title: document.title,
+        text: 'Sprawdź stronę Akcji Zachowaj Zieleń – Stop MPZP Gocław, która ułatwia wysyłanie sprzeciwu!',
+        url: window.location.href,
+      };
+      
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          console.log('Strona udostępniona!');
+        } catch (err) {
+          console.error('Błąd podczas udostępniania:', err);
+        }
+      } else {
+        copyToClipboard(window.location.href);
+        alert('Link został skopiowany do schowka!');
+      }
+    }
+    
+    function copyToClipboard(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    }
+  </script>
+</body>
+</html>
