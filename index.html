@@ -23,7 +23,7 @@
     h1 {
       margin: 0 0 10px;
     }
-    .content, .instructions, .initiative, .intro, .footer, .cta {
+    .content, .instructions, .initiative, .intro, .footer {
       background-color: white;
       padding: 20px 30px;
       border-radius: 10px;
@@ -61,8 +61,9 @@
     }
     .visual img {
       width: 100%;
-      height: 300px;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
+      height: auto;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
@@ -92,10 +93,12 @@
         z-index: 1000;
       }
       .sticky-download a {
+        display: block;
         color: white;
         font-weight: bold;
         font-size: 1.1em;
         text-decoration: none;
+        margin: 5px 0;
       }
     }
   </style>
@@ -120,56 +123,41 @@
     <button class="share-btn" onclick="sharePage()">🔗 Udostępnij stronę</button>
   </header>
 
-  <div class="cta">
-    <h2>Zadziałaj teraz!</h2>
-    <p>Wypełnij i wyślij swoje pismo – to proste i możesz realnie wpłynąć na przyszłość naszej okolicy. Im więcej głosów, tym większa siła!</p>
-    <a class="button" href="https://github.com/nutaplus/zielone-zycie/blob/main/Szablon_Uwaga_MPZP_Goclaw.docx?raw=true" target="_blank">📄 Pobierz szablon pisma (Word)</a>
-  </div>
-
   <div class="visuals">
-  <div class="visual">
-    <img src="https://github.com/nutaplus/zielone-zycie/blob/main/zielen.jpg?raw=true" alt="Idealna rezerwa zieleni" />
-    <p>Idealna rezerwa – drzewa, ptaki, wiewiórki, kwiaty i wejście do metra</p>
+    <div class="visual">
+      <img src="https://github.com/nutaplus/zielone-zycie/blob/main/zielen.jpg?raw=true" alt="Idealna rezerwa zieleni" />
+      <p>Idealna rezerwa – drzewa, ptaki, wiewiórki, kwiaty i wejście do metra</p>
+    </div>
+    <div class="visual">
+      <img src="https://github.com/nutaplus/zielone-zycie/blob/main/droga.jpg?raw=true" alt="Smutna wizja" />
+      <p>Smutna wizja – droga, korek, spaliny, tramwaj i ekrany akustyczne</p>
+    </div>
   </div>
-  <div class="visual">
-    <img src="https://github.com/nutaplus/zielone-zycie/blob/main/droga.jpg?raw=true" alt="Smutna wizja" />
-    <p>Smutna wizja – droga, korek, spaliny, tramwaj i ekrany akustyczne</p>
+
+  <div class="instructions">
+    <h2>Zadziałaj teraz – Co zrobić?</h2>
+    <p>Pełne informacje znajdziesz również na stronie Urzędu: <a href="https://architektura.um.warszawa.pl/-/jaki-plan-miejscowy-dla-obszaru-goclawia-w-rejonie-jeziorka-goclawskiego-czesc-3-wylozenie" target="_blank">Zobacz szczegóły planu na stronie urzędu</a></p>
+    <ol>
+      <li>Pobierz formularz z gotową treścią, uzupełnij swoje dane i podpisz.</li>
+      <li>Wyślij pismo do Urzędu Miasta do <strong>25 kwietnia 2025 r.</strong>:
+        <ul>
+          <li><strong>Mailowo:</strong>
+            <div class="email-copy">
+              <span>sekretariat.BAiPP@um.warszawa.pl</span>
+              <button class="copy-btn" onclick="copyEmail()">📋 Skopiuj adres</button>
+            </div>
+          </li>
+          <li><strong>Przez ePUAP:</strong> /UMSTWarszawa/skrytkaESP</li>
+          <li><strong>Osobiście lub pocztą:</strong> Al. Jerozolimskie 44, 00-024 Warszawa</li>
+        </ul>
+      </li>
+    </ol>
   </div>
-</div>
 
-<div class="instructions">
-  <h2>Co zrobić?</h2>
-  <ol>
-    <li>Pobierz szablon pisma Word, uzupełnij swoje dane i podpisz.</li>
-    <li>Wyślij pismo do Urzędu Miasta do <strong>25 kwietnia 2025 r.</strong>:
-      <ul>
-        <li><strong>Mailowo:</strong>
-          <div class="email-copy">
-            <span>sekretariat.BAiPP@um.warszawa.pl</span>
-            <button class="copy-btn" onclick="copyEmail()">📋 Skopiuj adres</button>
-          </div>
-        </li>
-        <li><strong>Przez ePUAP:</strong> /UMSTWarszawa/skrytkaESP</li>
-        <li><strong>Osobiście lub pocztą:</strong> Al. Jerozolimskie 44, 00-024 Warszawa</li>
-      </ul>
-    </li>
-  </ol>
-</div>
-
-<div class="content">
-  <h2>Podgląd pisma</h2>
-  <pre>
-Warszawa, [data]
-
-Biuro Architektury i Planowania Przestrzennego
-Urząd Miasta Stołecznego Warszawy
-Al. Jerozolimskie 44, 00-024 Warszawa
-E-mail: sekretariat.BAiPP@um.warszawa.pl
-
-Dotyczy: Uwagi do projektu MPZP Gocław
-
-Ja, [Imię i Nazwisko], zamieszkały/a przy [Adres], składam niniejszą uwagę do projektu MPZP Gocław.
-
+  <div class="content">
+    <h2>Treść proponowanej uwagi</h2>
+    <p>Poniżej znajdziesz przykładową treść merytorycznej uwagi, którą możesz wpisać do oficjalnego formularza urzędowego.</p>
+    <pre>
 1. Przedmiot uwagi
 Sprzeciwiam się budowie drogi klasy głównej ruchu przyspieszonego (KD-GP) oraz torowiska tramwajowego na obszarze obecnej rezerwy zieleni. Wnoszę o zachowanie zieleni oraz przekształcenie terenu w park dostępny dla mieszkańców.
 
@@ -183,23 +171,20 @@ Wnoszę o:
 1. Zaniechanie budowy drogi i torowiska tramwajowego.
 2. Zachowanie zieleni i przekształcenie jej w park.
 3. Skierowanie inwestycji na rozwój metra.
+    </pre>
+    <a class="button" href="https://github.com/nutaplus/zielone-zycie/blob/main/Formularz_Urzedowy_z_Wypelniona_Trescia.pdf?raw=true" target="_blank">📄 Pobierz formularz z uzupełnioną treścią (PDF)</a>
+    <a class="button" href="https://github.com/nutaplus/zielone-zycie/blob/main/Formularz_Urzedowy_z_Wypelniona_Trescia.docx?raw=true" target="_blank">📝 Pobierz formularz z uzupełnioną treścią (Word)</a>
+  </div>
 
-Z poważaniem,
-[Imię i Nazwisko]
-[Telefon]
-[Email]
-  </pre>
-  <a class="button" href="https://github.com/nutaplus/zielone-zycie/blob/main/Szablon_Uwaga_MPZP_Goclaw.docx?raw=true" target="_blank">📄 Pobierz szablon pisma (Word)</a>
-</div>
-
-<div class="footer">
+  <div class="footer">
     <p style="font-size: 0.9em; text-align: center; color: #666;">
       Strona oraz grafiki zostały stworzone za pomocą AI zgodnie z opisem i wymaganiami mieszkanki osiedla Saska.
     </p>
   </div>
 
   <div class="sticky-download">
-    <a href="https://github.com/nutaplus/zielone-zycie/blob/main/Szablon_Uwaga_MPZP_Goclaw.docx?raw=true">📄 Pobierz szablon pisma</a>
+    <a href="https://github.com/nutaplus/zielone-zycie/blob/main/Formularz_Urzedowy_z_Wypelniona_Trescia.pdf?raw=true">📄 Pobierz szablon pisma (PDF)</a>
+    <a href="https://github.com/nutaplus/zielone-zycie/blob/main/Formularz_Urzedowy_z_Wypelniona_Trescia.docx?raw=true">📝 Pobierz szablon pisma (Word)</a>
   </div>
 </body>
 </html>
