@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wypełnij formularz MPZP</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.7.0/docx.umd.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7f9;
+      padding: 20px;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #2e8b57;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #2e8b57;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1em;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>Wypełnij formularz uwagi do MPZP</h1>
+  <form id="mpzpFullForm">
+    <label>Rodzaj aktu planowania</label>
+    <select id="documentType">
+      <option value="miejscowy plan zagospodarowania przestrzennego">miejscowy plan zagospodarowania przestrzennego</option>
+      <option value="studium uwarunkowań i kierunków zagospodarowania przestrzennego">studium uwarunkowań i kierunków zagospodarowania przestrzennego</option>
+    </select>
+
+    <label>Nazwa aktu planowania</label>
+    <input type="text" id="documentName" placeholder="np. MPZP Gocławia w rejonie Jeziora Gocławskiego – część III" />
+
+    <label>Imię i nazwisko / Nazwa jednostki organizacyjnej</label>
+    <input type="text" id="fullName" />
+
+    <label>Adres zamieszkania / siedziby</label>
+    <input type="text" id="address" />
+
+    <label>Treść uwagi</label>
+    <textarea id="commentText" rows="10" placeholder="Tutaj wpisz treść swojej uwagi..."></textarea>
+
+    <label>Dodatkowe informacje (np. numer telefonu, email)</label>
+    <input type="text" id="additionalInfo" />
+
+    <div class="buttons">
+      <button type="button" onclick="generateFullWord()">📄 Pobierz Word</button>
+      <button type="button" onclick="generateFullPDF()">🧾 Pobierz PDF</button>
+    </div>
+  </form>
+
+  <script>
+    const buildFullText = () => {
+      const type = document.getElementById('documentType').value;
+      const name = document.getElementById('documentName').value;
+      const fullName = document.getElementById('fullName').value;
+      const address = document.getElementById('address').value;
+      const comment = document.getElementById('commentText').value;
+      const contact = document.getElementById('additionalInfo').value;
+
+      return `Dotyczy: Uwagi do ${type}\nNazwa aktu planowania: ${name}\n\nJa, ${fullName}, zamieszkały/a pod adresem ${address}, składam niniejszą uwagę:\n\n${comment}\n\nDodatkowe dane kontaktowe: ${contact}\n\nZ poważaniem,\n${fullName}`;
+    };
+
+    async function generateFullWord() {
+      const { Document, Packer, Paragraph } = window.docx;
+      const doc = new Document();
+      const text = buildFullText();
+      const paragraphs = text.split('\n').map(line => new Paragraph(line));
+      doc.addSection({ children: paragraphs });
+      const blob = await Packer.toBlob(doc);
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'Uwaga_MPZP_pelna.docx';
+      a.click();
+    }
+
+    async function generateFullPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const text = buildFullText();
+      const lines = doc.splitTextToSize(text, 180);
+      doc.text(lines, 15, 20);
+      doc.save('Uwaga_MPZP_pelna.pdf');
+    }
+  </script>
+</body>
+</html>
